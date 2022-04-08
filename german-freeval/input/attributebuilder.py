@@ -15,7 +15,7 @@ class AttributeBuilder:
         self.values[period] = value
 
     def build(self):
-        # TODO How do AttributeBuilder know about number of periods?
+        # TODO #1 How do AttributeBuilder know about number of periods?
 
         n_periods = 10
         values = [0] * n_periods
