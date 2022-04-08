@@ -19,6 +19,14 @@ class Base(Segment):
     capacity_factor: Attribute
 
 
+class StartBase(Base):
+    pass
+
+
+class EndBase(Base):
+    pass
+
+
 class Merging(Base):
     # infrastructure input
     type_onramp: Attribute
@@ -60,3 +68,4 @@ class Weaving(Base):
 
     # model parameters
     capacity_factor_onramp: Attribute
+    capacity_factor_offramp: Attribute
