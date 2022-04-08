@@ -1,5 +1,5 @@
-from macro.segment import Segment
-from macro.attribute import Attribute
+from segment import Segment
+from attribute import Attribute
 
 
 class Base(Segment):

@@ -1,6 +1,4 @@
 from attributebuilder import AttributeBuilder
-
-
 class SegmentBuilder:
     def __init__(self, id: int) -> None:
         self.id = id
@@ -18,7 +16,7 @@ class SegmentBuilder:
     def add_attribute(self, new_attribute_builder: AttributeBuilder):
         self.attribute_builders.append(new_attribute_builder)
 
-    def has_attribute(self, attribute_name):
+    def has_attribute(self, attribute_name:AttributeBuilder):
         pass
 
     def add_successor(self, successor: "SegmentBuilder", type: str):
@@ -39,3 +37,8 @@ class SegmentBuilder:
 
     def build(self):
         pass
+    
+    def __str__(self) -> str:
+        return str(self.id) + "[>" + ','.join(map(lambda s: str(s.id), self.segments_in))\
+                            + "; " + ','.join(map(lambda s: str(s.id), self.segments_out)) + ">]"
+
