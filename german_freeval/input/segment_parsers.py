@@ -46,8 +46,14 @@ class CsvSegmentTopologyParser:
 class CsvSegmentAttributeParser:
     
     @classmethod
-    def parse(cls, file:str) -> None:
+    def parse(cls, file:str, segments: List[SegmentBuilder]) -> None:
            rows = ParserUtil.read_file(path=file)
+           map = {s.id:s for s in segments}
+    
+    @classmethod
+    def parseRow(cls, row: List[str], segments: Dict[int,SegmentBuilder]) -> List[SegmentBuilder]:
+        id:int = int(row[0])
+        name = str(row[1])
        
        
 
