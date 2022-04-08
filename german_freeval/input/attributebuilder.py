@@ -16,7 +16,7 @@ class AttributeBuilder:
 
     def build(self, n_periods: int):
         values = [0] * n_periods
-        for p in self.values.keys():
+        for p in sorted(self.values.keys()):
             values[p:] = [self.values[p]] * len(values[p:])
 
         attribute = Attribute(name=self.name, type=self.type, values=values)
