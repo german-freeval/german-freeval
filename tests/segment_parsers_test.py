@@ -34,4 +34,3 @@ class SegmentParserTest(unittest.TestCase):
         assert map[42].segments_in[b].id == 24
         assert map[42].segments_in[r].id == 3
         assert len(map[42].segments_out) == 0
-        
