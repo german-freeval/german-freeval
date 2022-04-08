@@ -1,6 +1,12 @@
-from german_freeval.macro.segment import Segment
-from input.attributebuilder import AttributeBuilder
-from macro.hbs_segments import Base, Merging, Diverging, Weaving, Source, Drain
+from german_freeval.input.attributebuilder import AttributeBuilder
+from german_freeval.macro.hbs_segments import (
+    Base,
+    Diverging,
+    Drain,
+    Merging,
+    Source,
+    Weaving,
+)
 
 
 class SegmentBuilder:
@@ -33,17 +39,23 @@ class SegmentBuilder:
 
     def add_successor(self, successor: "SegmentBuilder", type: str):
         if type not in self.link_types:
-            raise
-        if self.segments_out[type]:
-            raise
+            raise Exception(
+                "{} is not a valid type {}".format(type, self.segment_types)
+            )
+        if type in self.segments_out:
+            print(self.id, type, self.segments_out)
+            raise Exception("{} already exists in {}".format(type, self.segments_out))
         else:
             self.segments_out[type] = successor
 
     def add_predecessor(self, predecessor: "SegmentBuilder", type: str):
         if type not in self.link_types:
-            raise
-        if self.segments_in[type]:
-            raise
+            raise Exception(
+                "{} is not a valid type {}".format(type, self.segment_types)
+            )
+        if type in self.segments_in:
+            print(self.segments_in)
+            raise Exception("{} already exists in {}".format(type, self.segments_in))
         else:
             self.segments_in[type] = predecessor
 
@@ -56,6 +68,9 @@ class SegmentBuilder:
             setattr(segment, attribute_builder.name, attribute_builder.build())
 
         return segment
+
+    def __repr__(self) -> str:
+        return str(self)
 
     def __str__(self) -> str:
         return (

@@ -1,5 +1,5 @@
-1;0;2;0
-2;0;24;0
-24;0;42;0
-2;1;3;0
-3;0;42;1
+1;base;2;base
+2;base;24;base
+24;base;42;base
+2;ramp;3;base
+3;base;42;ramp
