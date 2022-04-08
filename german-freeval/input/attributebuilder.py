@@ -14,10 +14,7 @@ class AttributeBuilder:
     def add_period_value(self, period: int, value):
         self.values[period] = value
 
-    def build(self):
-        # TODO #1 How do AttributeBuilder know about number of periods?
-
-        n_periods = 10
+    def build(self, n_periods: int):
         values = [0] * n_periods
         for p in self.values.keys():
             values[p:] = [self.values[p]] * len(values[p:])
