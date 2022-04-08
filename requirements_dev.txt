@@ -1,0 +1,6 @@
+flake8
+black
+rope
+pytest
+pytest-cov
+isort
