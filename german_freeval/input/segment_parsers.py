@@ -1,5 +1,5 @@
 from typing import Dict, List
-from segmentbuilder import SegmentBuilder
+from german_freeval.input.segmentbuilder import SegmentBuilder
 
 class CsvSegmentTopologyParser:
     
@@ -14,7 +14,7 @@ class CsvSegmentTopologyParser:
             segments[s_from.id] = s_from
             segments[s_to.id] = s_to
     
-        return segments.values()
+        return list(segments.values())
            
     
     @classmethod
@@ -22,22 +22,23 @@ class CsvSegmentTopologyParser:
         assert len(row) == 4, "Cannot parse connection " + str(row) + "! expected 4 values: fromId, fromIndex, toId, toIndex"
         
         fromId: int = int(row[0])
-        fromIndex: int = int(row[1])
+        fromIndex: str = str(row[1])
         toId: int = int(row[2])
-        toIndex: int = int(row[3])
+        toIndex: str = str(row[3])
+        print(fromId, fromIndex, toId, toIndex)
         
-        if not segments[fromId]:
+        if fromId not in segments:
             segment_from: SegmentBuilder = SegmentBuilder(fromId)
         else:
             segment_from: SegmentBuilder = segments[fromId]
         
-        if not segments[toId]:
-            segment_to: SegmentBuilder = SegmentBuilder(fromId)
+        if toId not in segments:
+            segment_to: SegmentBuilder = SegmentBuilder(toId)
         else:
-            segment_from: SegmentBuilder = segments[fromId]
+            segment_to: SegmentBuilder = segments[toId]
             
-        segment_from.add_successor(segment_to, toIndex)
-        segment_to.add_predecessor(segment_from, fromIndex)
+        segment_from.add_successor(segment_to, fromIndex)
+        segment_to.add_predecessor(segment_from, toIndex)
         
         return (segment_from, segment_to)
        

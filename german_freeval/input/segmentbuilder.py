@@ -1,4 +1,5 @@
-from attributebuilder import AttributeBuilder
+from msilib.schema import Error
+from german_freeval.input.attributebuilder import AttributeBuilder
 class SegmentBuilder:
     def __init__(self, id: int) -> None:
         self.id = id
@@ -21,24 +22,28 @@ class SegmentBuilder:
 
     def add_successor(self, successor: "SegmentBuilder", type: str):
         if type not in self.segment_types:
-            raise
-        if self.segments_out[type]:
-            raise
+            raise Error("{} is not a valid type {}".format(type, self.segment_types))
+        if type in self.segments_out:
+            print(self.id, type, self.segments_out)
+            raise Error("{} already exists in {}".format(type, self.segments_out))
         else:
             self.segments_out[type] = successor
 
     def add_predecessor(self, predecessor: "SegmentBuilder", type: str):
         if type not in self.segment_types:
-            raise
-        if self.segments_in[type]:
-            raise
+            raise Error("{} is not a valid type {}".format(type, self.segment_types))
+        if type in self.segments_in:
+            print(self.segments_in)
+            raise Error("{} already exists in {}".format(type, self.segments_in))
         else:
             self.segments_in[type] = predecessor
 
     def build(self):
         pass
     
+    def __repr__(self) -> str:
+        return str(self)
+    
     def __str__(self) -> str:
-        return str(self.id) + "[>" + ','.join(map(lambda s: str(s.id), self.segments_in))\
-                            + "; " + ','.join(map(lambda s: str(s.id), self.segments_out)) + ">]"
+        return str(self.id)
 

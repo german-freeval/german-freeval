@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "german-freeval",
+            "name": "german_freeval",
             "type": "python",
             "request": "launch",
-            "module": "german-freeval",
+            "module": "german_freeval",
             "justMyCode": true
         }
     ]
