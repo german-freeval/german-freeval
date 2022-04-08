@@ -3,7 +3,7 @@ class Attribute:
         self.name = name
         self.type = type
         self.values = values
-        
+
     name: str
     type: str
     values: list
