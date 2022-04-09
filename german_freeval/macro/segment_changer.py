@@ -27,28 +27,28 @@ class SegmentChangerHBS(SegmentChanger):
         for i_periods in range(len(segment.slope)):
             freeflow_speed_hbs.append(
                 self.hbs_handler.hbs_freeflow_speed(
-                    slope=segment.slope[i_periods],
-                    heavy_vehicle_share=segment.heavy_vehicle_share[i_periods],
-                    is_urban=segment.is_urban[i_periods],
-                    has_rampmeter=segment.has_rampmeter[i_periods],
-                    lanes=segment.lanes[i_periods],
-                    speed_limit=segment.speed_limit[i_periods],
+                    segment.slope[i_periods],
+                    segment.heavy_vehicle_share[i_periods],
+                    segment.is_urban[i_periods],
+                    segment.has_rampmeter[i_periods],
+                    segment.lanes[i_periods],
+                    segment.speed_limit[i_periods],
                 )
             )
             capacity_hbs.append(
                 self.hbs_handler.hbs_capacity(
-                    slope=segment.slope[i_periods],
-                    heavy_vehicle_share=segment.heavy_vehicle_share[i_periods],
-                    is_urban=segment.is_urban[i_periods],
-                    has_rampmeter=segment.has_rampmeter[i_periods],
-                    lanes=segment.lanes[i_periods],
-                    speed_limit=segment.speed_limit[i_periods],
+                    segment.slope[i_periods],
+                    segment.heavy_vehicle_share[i_periods],
+                    segment.is_urban[i_periods],
+                    segment.has_rampmeter[i_periods],
+                    segment.lanes[i_periods],
+                    segment.speed_limit[i_periods],
                 )
             )
             jam_density.append(
                 self.hbs_handler.hbs_jam_density(
-                    lanes=segment.lanes[i_periods],
-                    heavy_vehicle_share=segment.heavy_vehicle_share[i_periods],
+                    segment.lanes[i_periods],
+                    segment.heavy_vehicle_share[i_periods],
                 )
             )
 
