@@ -72,9 +72,7 @@ class SegmentChangerHBS(SegmentChanger):
             "speed_limit",
         ]
         existing_attributes_segment = dir(segment)
-        if set(necessary_hbs_properties).issubset(existing_attributes_segment):
-            pass
-        else:
+        if not set(necessary_hbs_properties).issubset(existing_attributes_segment):
             raise Exception(
                 "segment does not contain all needed properties builders to calculate additional parameters"
             )
