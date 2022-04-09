@@ -1,5 +1,6 @@
-from german_freeval.macro.property import Property
 import numpy as np
+
+from german_freeval.macro.property import Property
 
 
 class PropertyBuilder:

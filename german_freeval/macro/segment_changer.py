@@ -1,5 +1,5 @@
-from german_freeval.macro.hbs_segments import Base
 from german_freeval.input.hbs_handler import HBSHandler
+from german_freeval.macro.hbs_segments import Base
 from german_freeval.macro.property import Property
 
 
