@@ -29,8 +29,8 @@ class SegmentChangerHBS(SegmentChanger):
                 self.hbs_handler.hbs_freeflow_speed(
                     slope=segment.slope[i_periods],
                     heavy_vehicle_share=segment.heavy_vehicle_share[i_periods],
-                    ballungsraum=segment.ballungsraum[i_periods],
-                    has_zra=segment.has_zra[i_periods],
+                    is_urban=segment.is_urban[i_periods],
+                    has_rampmeter=segment.has_rampmeter[i_periods],
                     lanes=segment.lanes[i_periods],
                     speed_limit=segment.speed_limit[i_periods],
                 )
@@ -39,8 +39,8 @@ class SegmentChangerHBS(SegmentChanger):
                 self.hbs_handler.hbs_capacity(
                     slope=segment.slope[i_periods],
                     heavy_vehicle_share=segment.heavy_vehicle_share[i_periods],
-                    ballungsraum=segment.ballungsraum[i_periods],
-                    has_zra=segment.has_zra[i_periods],
+                    is_urban=segment.is_urban[i_periods],
+                    has_rampmeter=segment.has_rampmeter[i_periods],
                     lanes=segment.lanes[i_periods],
                     speed_limit=segment.speed_limit[i_periods],
                 )
@@ -66,8 +66,8 @@ class SegmentChangerHBS(SegmentChanger):
         necessary_hbs_properties = [
             "slope",
             "heavy_vehicle_share",
-            "ballungsraum",
-            "has_zra",
+            "is_urban",
+            "has_rampmeter",
             "lanes",
             "speed_limit",
         ]

@@ -1,11 +1,12 @@
 import os
+from pathlib import Path
 
 import pandas as pd
 
 
 class HBSHandler:
     def __init__(self) -> None:
-        self.dirname = os.path.dirname(__file__)
+        self.dirname = Path("../resources/hbs")
         self.hbs_table_A3_2 = self.import_table(table_name="TabA3-2")
         self.hbs_table_A3_3 = self.import_table(table_name="TabA3-3")
         self.hbs_table_A3_4 = self.import_table(table_name="TabA3-4")
@@ -14,9 +15,7 @@ class HBSHandler:
         self.hbs_table_A3_7 = self.import_table(table_name="TabA3-7")
 
     def import_table(self, table_name: str):
-        table_path = os.path.join(
-            self.dirname, "resources", "hbs_" + table_name + ".csv"
-        )
+        table_path = self.dirname / f"hbs_{table_name}.csv"
         table = pd.read_csv(table_path, sep=";")
         return table
 
@@ -25,9 +24,9 @@ class HBSHandler:
         slope: float,
         heavy_vehicle_share: float,
         lanes: int,
-        ballungsraum: bool,
+        is_urban: bool,
         speed_limit: int,
-        has_zra: bool,
+        has_rampmeter: bool,
     ):
         V_0 = None  # TODO
         L_0 = None
@@ -46,13 +45,13 @@ class HBSHandler:
         slope: float,
         heavy_vehicle_share: float,
         lanes: int,
-        ballungsraum: bool,
+        is_urban: bool,
         speed_limit: int,
-        has_zra: bool,
+        has_rampmeter: bool,
     ):
         q = 0
         V_0, L_0, C_0, C, v_krit = self.get_parameters_equation_A3_7(
-            slope, heavy_vehicle_share, lanes, ballungsraum, speed_limit, has_zra
+            slope, heavy_vehicle_share, lanes, is_urban, speed_limit, has_rampmeter
         )
 
         freeflow_speed = self.hbs_equation_A3_7(q, V_0, L_0, C_0, C)
@@ -64,9 +63,9 @@ class HBSHandler:
         slope: float,
         heavy_vehicle_share: float,
         lanes: int,
-        ballungsraum: bool,
+        is_urban: bool,
         speed_limit: int,
-        has_zra: bool,
+        has_rampmeter: bool,
     ):  # TODO
         capacity = None
         return capacity
