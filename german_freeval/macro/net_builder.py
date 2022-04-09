@@ -1,5 +1,5 @@
-from german_freeval.macro.net import Net
 from german_freeval.input.segment_builder import SegmentBuilder
+from german_freeval.macro.net import Net
 from german_freeval.macro.segment_changer import SegmentChanger
 from german_freeval.meta.context import Context
 
@@ -30,8 +30,9 @@ class NetBuilder:
         net = Net(self.context)
 
         for segmentbuilder in self.segmentbuilders:
+            segment = segmentbuilder.build(self.context.n_periods)
             for changer in self.changers:
-                changer.apply(segmentbuilder)
-            net.add_segment(segmentbuilder.build(self.context.n_periods))
+                changer.apply(segment)
+            net.add_segment(segment)
 
         return net
