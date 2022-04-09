@@ -1,4 +1,3 @@
-from typing import Dict, List
 from german_freeval.input.property_builder import PropertyBuilder
 from german_freeval.macro.hbs_segments import (
     Base,
@@ -23,9 +22,9 @@ class SegmentBuilder:
         (1, 0): Drain,
     }
     id: int
-    segments_in: Dict[str, "SegmentBuilder"]
-    segments_out: Dict[str, "SegmentBuilder"]
-    property_builders: List[PropertyBuilder]
+    segments_in: dict[str, "SegmentBuilder"]
+    segments_out: dict[str, "SegmentBuilder"]
+    property_builders: list[PropertyBuilder]
     build_result: Segment
 
     def __init__(self, id: int) -> None:
