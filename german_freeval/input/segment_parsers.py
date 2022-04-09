@@ -80,7 +80,7 @@ class CsvSegmentPropertyParser:
         properties = {p.name: p for p in segment.property_builders}
 
         if name not in properties:
-            property = PropertyBuilder(name=name, type=type, startvalue=value)
+            property = PropertyBuilder(name=name, type=type, initial_values=value)
             segment.add_property(property)
         else:
             property = properties[name]
