@@ -8,5 +8,5 @@ class Property:
     type: str
     values: list
 
-    def getValue(self, time: int):
+    def __getitem__(self, time: int):
         return self.values[time]
