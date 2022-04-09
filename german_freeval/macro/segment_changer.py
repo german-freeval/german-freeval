@@ -29,8 +29,8 @@ class SegmentChangerHBS(SegmentChanger):
                 self.hbs_handler.hbs_freeflow_speed(
                     segment.slope[i_periods],
                     segment.heavy_vehicle_share[i_periods],
-                    segment.ballungsraum[i_periods],
-                    segment.has_zra[i_periods],
+                    segment.is_urban[i_periods],
+                    segment.has_rampmeter[i_periods],
                     segment.lanes[i_periods],
                     segment.speed_limit[i_periods],
                 )
@@ -39,8 +39,8 @@ class SegmentChangerHBS(SegmentChanger):
                 self.hbs_handler.hbs_capacity(
                     segment.slope[i_periods],
                     segment.heavy_vehicle_share[i_periods],
-                    segment.ballungsraum[i_periods],
-                    segment.has_zra[i_periods],
+                    segment.is_urban[i_periods],
+                    segment.has_rampmeter[i_periods],
                     segment.lanes[i_periods],
                     segment.speed_limit[i_periods],
                 )
@@ -66,14 +66,14 @@ class SegmentChangerHBS(SegmentChanger):
         necessary_hbs_properties = [
             "slope",
             "heavy_vehicle_share",
-            "ballungsraum",
-            "has_zra",
+            "is_urban",
+            "has_rampmeter",
             "lanes",
             "speed_limit",
         ]
         existing_attributes_segment = dir(segment)
         if not set(necessary_hbs_properties).issubset(existing_attributes_segment):
-            raise Exception(
+            raise ValueError(
                 "segment does not contain all needed properties builders to \
                  calculate additional parameters"
             )
