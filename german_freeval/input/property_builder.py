@@ -1,4 +1,5 @@
 from german_freeval.macro.property import Property
+import numpy as np
 
 
 class PropertyBuilder:
@@ -13,6 +14,13 @@ class PropertyBuilder:
 
     def add_period_value(self, period: int, value):
         self.values[period] = value
+
+    def get_value(self, period: int):
+        periods = np.sort(self.values.keys())
+        for i in range(len(periods)):
+            if periods[i] - period > 0:
+                key_period = periods[i - 1]
+        return self.values[key_period]
 
     def build(self, n_periods: int):
         values = [0] * n_periods
