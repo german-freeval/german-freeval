@@ -18,6 +18,11 @@ class Base(Segment):
     # model parameters
     capacity_factor: Property
 
+    # ctm parameters
+    freeflow_speed_hbs: Property
+    capacity_hbs: Property
+    jam_density: Property
+
 
 class Source(Base):
     pass
