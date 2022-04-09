@@ -62,7 +62,7 @@ class SegmentBuilder:
         else:
             self.segments_in[type] = predecessor
 
-    def build(self):
+    def build(self, n_periods: int) -> Segment:
         if self.build_result:
             return self.build_result
 
@@ -71,7 +71,11 @@ class SegmentBuilder:
         ](id=self.id)
 
         for property_builder in self.property_builders:
-            setattr(self.build_result, property_builder.name, property_builder.build())
+            setattr(
+                self.build_result,
+                property_builder.name,
+                property_builder.build(n_periods),
+            )
 
         base_in = self.segments_in.get("base")
         ramp_in = self.segments_in.get("ramp")
@@ -79,13 +83,13 @@ class SegmentBuilder:
         ramp_out = self.segments_out.get("ramp")
 
         if base_in:
-            self.build_result.base_in = base_in.build()
+            self.build_result.base_in = base_in.build(n_periods)
         if base_out:
-            self.build_result.base_out = base_out.build()
+            self.build_result.base_out = base_out.build(n_periods)
         if ramp_in:
-            self.build_result.ramp_in = ramp_in.build()
+            self.build_result.ramp_in = ramp_in.build(n_periods)
         if ramp_out:
-            self.build_result.ramp_out = ramp_out.build()
+            self.build_result.ramp_out = ramp_out.build(n_periods)
 
         return self.build_result
 

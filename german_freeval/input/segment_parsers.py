@@ -27,24 +27,25 @@ class CsvSegmentTopologyParser:
             + "! expected 4 values: fromId, fromIndex, toId, toIndex"
         )
 
-        fromId: int = int(row[0])
-        fromIndex: str = str(row[1])
-        toId: int = int(row[2])
-        toIndex: str = str(row[3])
-        print(fromId, fromIndex, toId, toIndex)
+        from_id: int = int(row[0])
+        from_index: str = str(row[1])
+        to_id: int = int(row[2])
+        to_index: str = str(row[3])
+        print(from_id, from_index, to_id, to_index)
 
-        if fromId not in segments:
-            segment_from: SegmentBuilder = SegmentBuilder(fromId)
+        if from_id not in segments:
+            segment_from: SegmentBuilder = SegmentBuilder(from_id)
+
         else:
-            segment_from: SegmentBuilder = segments[fromId]
+            segment_from: SegmentBuilder = segments[from_id]
 
-        if toId not in segments:
-            segment_to: SegmentBuilder = SegmentBuilder(toId)
+        if to_id not in segments:
+            segment_to: SegmentBuilder = SegmentBuilder(to_id)
         else:
-            segment_to: SegmentBuilder = segments[toId]
+            segment_to: SegmentBuilder = segments[to_id]
 
-        segment_from.add_successor(segment_to, fromIndex)
-        segment_to.add_predecessor(segment_from, toIndex)
+        segment_from.add_successor(segment_to, from_index)
+        segment_to.add_predecessor(segment_from, to_index)
 
         return (segment_from, segment_to)
 
