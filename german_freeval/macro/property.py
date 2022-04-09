@@ -8,5 +8,16 @@ class Property:
     type: str
     values: list
 
-    def getValue(self, time: int):
+    def __getitem__(self, time: int):
         return self.values[time]
+
+    def __repr__(self) -> str:
+        return str(self)
+
+    def __str__(self) -> str:
+        if len(set(self.values)) == 1:
+            pass
+        return (
+            f"{self.name}[{self.type}]="
+            + f"{[(v, self.values.index(v)) for v in set(self.values)]}"
+        )

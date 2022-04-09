@@ -31,7 +31,6 @@ class CsvSegmentTopologyParser:
         from_index: str = str(row[1])
         to_id: int = int(row[2])
         to_index: str = str(row[3])
-        print(from_id, from_index, to_id, to_index)
 
         if from_id not in segments:
             segment_from: SegmentBuilder = SegmentBuilder(from_id)

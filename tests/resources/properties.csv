@@ -3,9 +3,11 @@
 24;name;str;gamma;0
 3;name;str;delta;0
 42;name;str;epsilon;0
+100;name;str;zeta;0
 1;speedlimit;float;80;0
 2;speedlimit;float;90;0
 24;speedlimit;float;100;0
 24;speedlimit;float;110;5
 3;speedlimit;float;120;0
 42;speedlimit;float;130;0
+100;speedlimit;float;140;0
