@@ -30,8 +30,9 @@ class NetBuilder:
         net = Net(self.context)
 
         for segmentbuilder in self.segmentbuilders:
+            segment = segmentbuilder.build(self.context.n_periods)
             for changer in self.changers:
-                changer.apply(segmentbuilder)
-            net.add_segment(segmentbuilder.build(self.context.n_periods))
+                changer.apply(segment)
+            net.add_segment(segment)
 
         return net
