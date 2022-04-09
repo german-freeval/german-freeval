@@ -83,6 +83,7 @@ class CsvSegmentAttributeParser:
 
         if name not in attributes:
             attribute = AttributeBuilder(name=name, type=type, startvalue=value)
+            segment.add_attribute(attribute)
         else:
             attribute = attributes[name]
 
