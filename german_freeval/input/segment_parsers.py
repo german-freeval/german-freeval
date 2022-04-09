@@ -1,7 +1,7 @@
 from typing import Dict, List
 
-from german_freeval.input.attributebuilder import AttributeBuilder
-from german_freeval.input.segmentbuilder import SegmentBuilder
+from german_freeval.input.property_builder import PropertyBuilder
+from german_freeval.input.segment_builder import SegmentBuilder
 
 
 class CsvSegmentTopologyParser:
@@ -52,7 +52,8 @@ class CsvSegmentTopologyParser:
         return (segment_from, segment_to)
 
 
-class CsvSegmentAttributeParser:
+class CsvSegmentPropertyParser:
+
     @classmethod
     def parse(cls, file: str, segments: List[SegmentBuilder]) -> None:
         rows = ParserUtil.read_file(path=file)
@@ -76,18 +77,18 @@ class CsvSegmentAttributeParser:
         period: int = int(row[4])
 
         assert id in segments, (
-            "Cannot add attribute " + name + " as the segment is missing: " + str(id)
+            "Cannot add property " + name + " as the segment is missing: " + str(id)
         )
         segment = segments[id]
-        attributes = {a.name: a for a in segment.attribute_builders}
+        properties = {p.name: p for p in segment.property_builders}
 
-        if name not in attributes:
-            attribute = AttributeBuilder(name=name, type=type, startvalue=value)
-            segment.add_attribute(attribute)
+        if name not in properties:
+            property = PropertyBuilder(name=name, type=type, startvalue=value)
+            segment.add_property(property)
         else:
-            attribute = attributes[name]
+            property = properties[name]
 
-        attribute.add_period_value(period=period, value=value)
+        property.add_period_value(period=period, value=value)
 
     @classmethod
     def parseValue(cls, value: str, type):

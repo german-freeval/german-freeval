@@ -1,4 +1,4 @@
-class Attribute:
+class Property:
     def __init__(self, name: str, type: str, values: list) -> None:
         self.name = name
         self.type = type
