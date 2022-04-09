@@ -1,5 +1,5 @@
-from german_freeval.macro.net import Net
 from german_freeval.input.segment_builder import SegmentBuilder
+from german_freeval.macro.net import Net
 from german_freeval.macro.segment_changer import SegmentChanger
 from german_freeval.meta.context import Context
 
