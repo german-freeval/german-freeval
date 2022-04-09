@@ -1,5 +1,5 @@
 from german_freeval.input.property_builder import PropertyBuilder
-from german_freeval.macro.hbs_segments import Base, Merging
+from german_freeval.macro.hbs_segments import Base, Merging, Source, Drain
 from german_freeval.macro.segment_changer import SegmentChanger
 
 
@@ -13,6 +13,8 @@ class DummySegmentChanger(SegmentChanger):
         density = []
 
         match segment:
+            case Source() | Drain():
+                return            
             case Merging():
                 ramp_demand = []
             case _:
@@ -56,5 +58,5 @@ class DummySegmentChanger(SegmentChanger):
         return segment.lanes[period] * 100
 
     def compute_demand_ramp(self, segment: Merging, period: int):
-        incoming: Base = segment.ramp_in
+        incoming: Source = segment.ramp_in
         return incoming.demand[period]
