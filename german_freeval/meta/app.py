@@ -14,6 +14,6 @@ class App:
         Args:
             file (str): path to the config file to be used in the simulation
         """
-        context = Context.create_from(file=file)
+        context = Context.create_from(file)
 
-        Simulator(context=context).run()
+        Simulator(context).run()

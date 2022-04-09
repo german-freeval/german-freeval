@@ -13,10 +13,10 @@ class SegmentParserTest(unittest.TestCase):
     def test_parse_attributes(self):
 
         segments = Topology.parse("tests/resources/topology.csv")
-        Properties.parse(file="tests/resources/properties.csv", segments=segments)
+        Properties.parse("tests/resources/properties.csv", segments)
 
-        self.check_topology(segments=segments)
-        self.check_properties(segments=segments)
+        self.check_topology(segments)
+        self.check_properties(segments)
 
     def check_topology(self, segments):
         assert len(segments) == 5

@@ -5,11 +5,11 @@ from german_freeval.input.segment_builder import SegmentBuilder
 class CsvSegmentTopologyParser:
     @classmethod
     def parse(cls, file: str) -> list[SegmentBuilder]:
-        rows = ParserUtil.read_file(path=file)
+        rows = ParserUtil.read_file(file)
 
         segments: dict[int, SegmentBuilder] = dict()
         for row in rows:
-            s_from, s_to = cls.parseRow(row=row, segments=segments)
+            s_from, s_to = cls.parseRow(row, segments)
 
             segments[s_from.id] = s_from
             segments[s_to.id] = s_to
@@ -53,7 +53,7 @@ class CsvSegmentTopologyParser:
 class CsvSegmentPropertyParser:
     @classmethod
     def parse(cls, file: str, segments: list[SegmentBuilder]) -> None:
-        rows = ParserUtil.read_file(path=file)
+        rows = ParserUtil.read_file(file)
         map = {s.id: s for s in segments}
 
         for row in rows:
@@ -80,12 +80,12 @@ class CsvSegmentPropertyParser:
         properties = {p.name: p for p in segment.property_builders}
 
         if name not in properties:
-            property = PropertyBuilder(name=name, type=type, startvalue=value)
+            property = PropertyBuilder(name, type, value)
             segment.add_property(property)
         else:
             property = properties[name]
 
-        property.add_period_value(period=period, value=value)
+        property.add_period_value(period, value)
 
     @classmethod
     def parseValue(cls, value: str, type):
