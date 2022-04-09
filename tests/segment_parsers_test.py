@@ -1,19 +1,21 @@
 from typing import List
 import unittest
-from german_freeval.input.segment_parsers import CsvSegmentTopologyParser as topology
-from german_freeval.input.segment_parsers import CsvSegmentPropertyParser as properties
+from german_freeval.input.segment_parsers import CsvSegmentTopologyParser as Topology
+from german_freeval.input.segment_parsers import CsvSegmentPropertyParser as Properties
 from german_freeval.input.segment_builder import SegmentBuilder
 
 
 class SegmentParserTest(unittest.TestCase):
 
     def test_parse_topology(self):
-        segments = topology.parse("tests/resources/topology.csv")
+        segments = Topology.parse("tests/resources/topology.csv")
         self.check_topology(segments)
 
     def test_parse_attributes(self):
-        segments = topology.parse("tests/resources/topology.csv")
-        properties.parse(file="tests/resources/properties.csv", segments=segments)
+
+        segments = Topology.parse("tests/resources/topology.csv")
+        Properties.parse(file="tests/resources/attributes.csv", segments=segments)
+
         self.check_topology(segments=segments)
         self.check_properties(segments=segments)
 
