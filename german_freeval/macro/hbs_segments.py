@@ -7,9 +7,9 @@ class Base(Segment):
     length: Property
     lanes: Property
     slope: Property
-    ballungsraum: Property  # TODO: Englisch?
+    is_urban: Property
     speedlimit: Property
-    has_zra: Property
+    has_rampmeter: Property
 
     # demand input
     demand: Property
