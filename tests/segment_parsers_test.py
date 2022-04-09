@@ -1,12 +1,11 @@
-from typing import List
 import unittest
-from german_freeval.input.segment_parsers import CsvSegmentTopologyParser as Topology
-from german_freeval.input.segment_parsers import CsvSegmentPropertyParser as Properties
+
 from german_freeval.input.segment_builder import SegmentBuilder
+from german_freeval.input.segment_parsers import CsvSegmentPropertyParser as Properties
+from german_freeval.input.segment_parsers import CsvSegmentTopologyParser as Topology
 
 
 class SegmentParserTest(unittest.TestCase):
-
     def test_parse_topology(self):
         segments = Topology.parse("tests/resources/topology.csv")
         self.check_topology(segments)
@@ -14,7 +13,7 @@ class SegmentParserTest(unittest.TestCase):
     def test_parse_attributes(self):
 
         segments = Topology.parse("tests/resources/topology.csv")
-        Properties.parse(file="tests/resources/attributes.csv", segments=segments)
+        Properties.parse(file="tests/resources/properties.csv", segments=segments)
 
         self.check_topology(segments=segments)
         self.check_properties(segments=segments)
@@ -23,8 +22,8 @@ class SegmentParserTest(unittest.TestCase):
         assert len(segments) == 5
 
         map = {s.id: s for s in segments}
-        b = 'base'
-        r = 'ramp'
+        b = "base"
+        r = "ramp"
 
         assert len(map[1].segments_in) == 0
         assert map[1].segments_out[b].id == 2
@@ -49,7 +48,7 @@ class SegmentParserTest(unittest.TestCase):
         assert map[42].segments_in[r].id == 3
         assert len(map[42].segments_out) == 0
 
-    def check_properties(self, segments: List[SegmentBuilder]):
+    def check_properties(self, segments: list[SegmentBuilder]):
         map = {s.id: s for s in segments}
 
         properties_1 = {a.name: a for a in map[1].property_builders}
@@ -63,27 +62,27 @@ class SegmentParserTest(unittest.TestCase):
         print(properties_3)
         print(properties_42)
 
-        assert properties_1['name'].values[0] == 'alpha'
-        assert properties_2['name'].values[0] == 'beta'
-        assert properties_24['name'].values[0] == 'gamma'
-        assert properties_3['name'].values[0] == 'delta'
-        assert properties_42['name'].values[0] == 'epsilon'
+        assert properties_1["name"].values[0] == "alpha"
+        assert properties_2["name"].values[0] == "beta"
+        assert properties_24["name"].values[0] == "gamma"
+        assert properties_3["name"].values[0] == "delta"
+        assert properties_42["name"].values[0] == "epsilon"
 
-        assert len(properties_1['name'].values) == 1
-        assert len(properties_2['name'].values) == 1
-        assert len(properties_24['name'].values) == 1
-        assert len(properties_3['name'].values) == 1
-        assert len(properties_42['name'].values) == 1
+        assert len(properties_1["name"].values) == 1
+        assert len(properties_2["name"].values) == 1
+        assert len(properties_24["name"].values) == 1
+        assert len(properties_3["name"].values) == 1
+        assert len(properties_42["name"].values) == 1
 
-        assert properties_1['speedlimit'].values[0] == 80
-        assert properties_2['speedlimit'].values[0] == 90
-        assert properties_24['speedlimit'].values[0] == 100
-        assert properties_24['speedlimit'].values[5] == 110
-        assert properties_3['speedlimit'].values[0] == 120
-        assert properties_42['speedlimit'].values[0] == 130
+        assert properties_1["speedlimit"].values[0] == 80
+        assert properties_2["speedlimit"].values[0] == 90
+        assert properties_24["speedlimit"].values[0] == 100
+        assert properties_24["speedlimit"].values[5] == 110
+        assert properties_3["speedlimit"].values[0] == 120
+        assert properties_42["speedlimit"].values[0] == 130
 
-        assert len(properties_1['speedlimit'].values) == 1
-        assert len(properties_2['speedlimit'].values) == 1
-        assert len(properties_24['speedlimit'].values) == 2
-        assert len(properties_3['speedlimit'].values) == 1
-        assert len(properties_42['speedlimit'].values) == 1
+        assert len(properties_1["speedlimit"].values) == 1
+        assert len(properties_2["speedlimit"].values) == 1
+        assert len(properties_24["speedlimit"].values) == 2
+        assert len(properties_3["speedlimit"].values) == 1
+        assert len(properties_42["speedlimit"].values) == 1
