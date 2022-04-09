@@ -16,17 +16,12 @@ class Base(Segment):
     heavyvehicle_share: Property
 
     # model parameters
-    capacity_factor: Property
-
-    def __str__(self) -> str:
-        return (
-            self.__class__.__name__
-            + super().__str__()
-            #           + f"  length: {self.length}\n"
-            #           + f"  lanes : {self.lanes}\n"
-            #           + f"  speedlimit: {self.speedlimit}\n"
-        )
-
+    capacity_factor: Property   
+      
+    # ctm parameters
+    freeflow_speed_hbs: Property
+    capacity_hbs: Property
+    jam_density: Property
 
 class Source(Base):
     pass
