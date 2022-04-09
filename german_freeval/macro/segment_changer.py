@@ -74,5 +74,6 @@ class SegmentChangerHBS(SegmentChanger):
         existing_attributes_segment = dir(segment)
         if not set(necessary_hbs_properties).issubset(existing_attributes_segment):
             raise Exception(
-                "segment does not contain all needed properties builders to calculate additional parameters"
+                "segment does not contain all needed properties builders to \
+                 calculate additional parameters"
             )
