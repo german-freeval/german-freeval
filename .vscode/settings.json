@@ -18,5 +18,11 @@
     "python.analysis.extraPaths": [
         "./german-freeeval"
     ],
-    "python.languageServer": "Pylance"
+    "python.languageServer": "Pylance",
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    }
 }

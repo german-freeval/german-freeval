@@ -68,7 +68,7 @@ class SegmentBuilder:
             return self.build_result
 
         self.build_result: Segment = self.segment_types[
-             (len(self.segments_in), len(self.segments_out))
+            (len(self.segments_in), len(self.segments_out))
         ](id=self.id)
 
         for property_builder in self.property_builders:
