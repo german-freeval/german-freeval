@@ -1,5 +1,5 @@
-from segment import Segment
-from attribute import Attribute
+from german_freeval.macro.segment import Segment
+from german_freeval.macro.attribute import Attribute
 
 
 class Base(Segment):
@@ -19,11 +19,11 @@ class Base(Segment):
     capacity_factor: Attribute
 
 
-class StartBase(Base):
+class Source(Base):
     pass
 
 
-class EndBase(Base):
+class Drain(Base):
     pass
 
 

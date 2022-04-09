@@ -1,4 +1,4 @@
-from macro.attribute import Attribute
+from german_freeval.macro.attribute import Attribute
 
 
 class AttributeBuilder:

@@ -76,8 +76,8 @@ class SegmentBuilder:
         return (
             str(self.id)
             + "[>"
-            + ",".join(map(lambda s: str(s.id), self.segments_in))
+            + ",".join(map(lambda s: str(s.id), self.segments_in.values()))
             + "; "
-            + ",".join(map(lambda s: str(s.id), self.segments_out))
+            + ",".join(map(lambda s: str(s.id), self.segments_out.values()))
             + ">]"
         )
