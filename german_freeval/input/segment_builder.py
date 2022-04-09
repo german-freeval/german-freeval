@@ -42,23 +42,23 @@ class SegmentBuilder:
 
     def add_successor(self, successor: "SegmentBuilder", type: str):
         if type not in self.link_types:
-            raise Exception(
+            raise ValueError(
                 "{} is not a valid type {}".format(type, self.segment_types)
             )
         if type in self.segments_out:
             print(self.id, type, self.segments_out)
-            raise Exception("{} already exists in {}".format(type, self.segments_out))
+            raise ValueError("{} already exists in {}".format(type, self.segments_out))
         else:
             self.segments_out[type] = successor
 
     def add_predecessor(self, predecessor: "SegmentBuilder", type: str):
         if type not in self.link_types:
-            raise Exception(
+            raise ValueError(
                 "{} is not a valid type {}".format(type, self.segment_types)
             )
         if type in self.segments_in:
             print(self.segments_in)
-            raise Exception("{} already exists in {}".format(type, self.segments_in))
+            raise ValueError("{} already exists in {}".format(type, self.segments_in))
         else:
             self.segments_in[type] = predecessor
 
