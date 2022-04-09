@@ -29,7 +29,7 @@ class SegmentBuilder:
     }
     id: int
     segments_in: Dict[str, "SegmentBuilder"]
-    segments_out: Dict[int, "SegmentBuilder"]
+    segments_out: Dict[str, "SegmentBuilder"]
     attribute_builders: List[AttributeBuilder]
 
     def add_attribute(self, new_attribute_builder: AttributeBuilder):
