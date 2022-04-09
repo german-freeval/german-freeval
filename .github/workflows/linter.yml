@@ -1,11 +1,7 @@
 ---
 name: Lint Code Base
 
-on:
-  #push:
-  #  branches-ignore: [main]
-  pull_request:
-    branches: [main]
+on: [pull_request]
 
 jobs:
   build:
