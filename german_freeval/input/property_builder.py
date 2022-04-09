@@ -1,7 +1,7 @@
-from german_freeval.macro.attribute import Attribute
+from german_freeval.macro.property import Property
 
 
-class AttributeBuilder:
+class PropertyBuilder:
     name: str
     type: str
     values: dict
@@ -19,9 +19,9 @@ class AttributeBuilder:
         for p in sorted(self.values.keys()):
             values[p:] = [self.values[p]] * len(values[p:])
 
-        attribute = Attribute(name=self.name, type=self.type, values=values)
+        property = Property(name=self.name, type=self.type, values=values)
 
-        return attribute
+        return property
 
     def __repr__(self) -> str:
         return str(self)

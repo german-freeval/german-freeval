@@ -1,22 +1,22 @@
 from german_freeval.macro.segment import Segment
-from german_freeval.macro.attribute import Attribute
+from german_freeval.macro.property import Property
 
 
 class Base(Segment):
     # infrastructure input
-    length: Attribute
-    lanes: Attribute
-    slope: Attribute
-    ballungsraum: Attribute  # TODO: Englisch?
-    speedlimit: Attribute
-    has_zra: Attribute
+    length: Property
+    lanes: Property
+    slope: Property
+    ballungsraum: Property  # TODO: Englisch?
+    speedlimit: Property
+    has_zra: Property
 
     # demand input
-    demand: Attribute
-    heavyvehicle_share: Attribute
+    demand: Property
+    heavyvehicle_share: Property
 
     # model parameters
-    capacity_factor: Attribute
+    capacity_factor: Property
 
 
 class Source(Base):
@@ -29,43 +29,43 @@ class Drain(Base):
 
 class Merging(Base):
     # infrastructure input
-    type_onramp: Attribute
-    speedlimit_onramp: Attribute
+    type_onramp: Property
+    speedlimit_onramp: Property
 
     # demand input
-    demand_onramp: Attribute
-    heavyvehicle_share_onramp: Attribute
+    demand_onramp: Property
+    heavyvehicle_share_onramp: Property
 
     # model parameters
-    capacity_factor_onramp: Attribute
+    capacity_factor_onramp: Property
 
 
 class Diverging(Base):
     # infrastructure input
-    type_offramp: Attribute
-    speedlimit_offramp: Attribute
+    type_offramp: Property
+    speedlimit_offramp: Property
 
     # demand input
-    demand_offramp: Attribute
-    heavyvehicle_share_offramp: Attribute
+    demand_offramp: Property
+    heavyvehicle_share_offramp: Property
 
     # model parameters
-    capacity_factor_offramp: Attribute
+    capacity_factor_offramp: Property
 
 
 class Weaving(Base):
     # infrastructure input
-    type_onramp: Attribute
-    speedlimit_onramp: Attribute
-    type_offramp: Attribute
-    speedlimit_offramp: Attribute
+    type_onramp: Property
+    speedlimit_onramp: Property
+    type_offramp: Property
+    speedlimit_offramp: Property
 
     # demand input
-    demand_onramp: Attribute
-    heavyvehicle_share_onramp: Attribute
-    demand_offramp: Attribute
-    heavyvehicle_share_offramp: Attribute
+    demand_onramp: Property
+    heavyvehicle_share_onramp: Property
+    demand_offramp: Property
+    heavyvehicle_share_offramp: Property
 
     # model parameters
-    capacity_factor_onramp: Attribute
-    capacity_factor_offramp: Attribute
+    capacity_factor_onramp: Property
+    capacity_factor_offramp: Property
