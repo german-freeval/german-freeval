@@ -18,6 +18,15 @@ class Base(Segment):
     # model parameters
     capacity_factor: Property
 
+    def __str__(self) -> str:
+        return (
+            self.__class__.__name__
+            + super().__str__()
+            #           + f"  length: {self.length}\n"
+            #           + f"  lanes : {self.lanes}\n"
+            #           + f"  speedlimit: {self.speedlimit}\n"
+        )
+
 
 class Source(Base):
     pass
