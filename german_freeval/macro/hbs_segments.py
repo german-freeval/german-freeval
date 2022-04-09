@@ -1,5 +1,5 @@
-from german_freeval.macro.segment import Segment
 from german_freeval.macro.property import Property
+from german_freeval.macro.segment import Segment
 
 
 class Base(Segment):

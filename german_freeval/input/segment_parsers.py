@@ -1,16 +1,13 @@
-from typing import Dict, List
-
 from german_freeval.input.property_builder import PropertyBuilder
 from german_freeval.input.segment_builder import SegmentBuilder
 
 
 class CsvSegmentTopologyParser:
-
     @classmethod
-    def parse(cls, file: str) -> List[SegmentBuilder]:
+    def parse(cls, file: str) -> list[SegmentBuilder]:
         rows = ParserUtil.read_file(path=file)
 
-        segments: Dict[int, SegmentBuilder] = dict()
+        segments: dict[int, SegmentBuilder] = dict()
         for row in rows:
             s_from, s_to = cls.parseRow(row=row, segments=segments)
 
@@ -21,8 +18,8 @@ class CsvSegmentTopologyParser:
 
     @classmethod
     def parseRow(
-            cls, row: List[str], segments: Dict[int, SegmentBuilder]
-    ) -> List[SegmentBuilder]:
+        cls, row: list[str], segments: list[int, SegmentBuilder]
+    ) -> list[SegmentBuilder]:
 
         assert len(row) == 4, (
             "Cannot parse connection "
@@ -30,32 +27,32 @@ class CsvSegmentTopologyParser:
             + "! expected 4 values: fromId, fromIndex, toId, toIndex"
         )
 
-        fromId: int = int(row[0])
-        fromIndex: str = str(row[1])
-        toId: int = int(row[2])
-        toIndex: str = str(row[3])
-        print(fromId, fromIndex, toId, toIndex)
+        from_id: int = int(row[0])
+        from_index: str = str(row[1])
+        to_id: int = int(row[2])
+        to_index: str = str(row[3])
+        print(from_id, from_index, to_id, to_index)
 
-        if fromId not in segments:
-            segment_from: SegmentBuilder = SegmentBuilder(fromId)
+        if from_id not in segments:
+            segment_from: SegmentBuilder = SegmentBuilder(from_id)
+
         else:
-            segment_from: SegmentBuilder = segments[fromId]
+            segment_from: SegmentBuilder = segments[from_id]
 
-        if toId not in segments:
-            segment_to: SegmentBuilder = SegmentBuilder(toId)
+        if to_id not in segments:
+            segment_to: SegmentBuilder = SegmentBuilder(to_id)
         else:
-            segment_to: SegmentBuilder = segments[toId]
+            segment_to: SegmentBuilder = segments[to_id]
 
-        segment_from.add_successor(segment_to, fromIndex)
-        segment_to.add_predecessor(segment_from, toIndex)
+        segment_from.add_successor(segment_to, from_index)
+        segment_to.add_predecessor(segment_from, to_index)
 
         return (segment_from, segment_to)
 
 
 class CsvSegmentPropertyParser:
-
     @classmethod
-    def parse(cls, file: str, segments: List[SegmentBuilder]) -> None:
+    def parse(cls, file: str, segments: list[SegmentBuilder]) -> None:
         rows = ParserUtil.read_file(path=file)
         map = {s.id: s for s in segments}
 
@@ -63,7 +60,7 @@ class CsvSegmentPropertyParser:
             cls.parseRow(row=row, segments=map)
 
     @classmethod
-    def parseRow(cls, row: List[str], segments: Dict[int, SegmentBuilder]) -> None:
+    def parseRow(cls, row: list[str], segments: dict[int, SegmentBuilder]) -> None:
         assert len(row) == 5, (
             "Cannot parse attribute value "
             + str(row)
@@ -98,7 +95,6 @@ class CsvSegmentPropertyParser:
 
 
 class ParserUtil:
-
     @classmethod
     def read_file(cls, path: str) -> str:
         """Read file content from the given file path and split lines and values.

@@ -1,4 +1,13 @@
+from german_freeval.macro.property import Property
+
+
 class Segment:
-    def __init__(self, id: int, name: str) -> None:
+    id: int
+    ramp_in: "Segment"
+    base_in: "Segment"
+    ramp_out: "Segment"
+    base_out: "Segment"
+    name: Property
+
+    def __init__(self, id: int) -> None:
         self.id = id
-        self.name = name
