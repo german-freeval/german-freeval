@@ -38,6 +38,7 @@ class CsvSegmentTopologyParser:
 
         if from_id not in segments:
             segment_from: SegmentBuilder = SegmentBuilder(from_id)
+
         else:
             segment_from: SegmentBuilder = segments[from_id]
 

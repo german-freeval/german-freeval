@@ -7,7 +7,7 @@ from german_freeval.input.segment_builder import SegmentBuilder
 
 class Context:
     segment_builders: List[SegmentBuilder]
-    periods: int
+    n_periods: int
 
     def __init__(self) -> None:
         pass
@@ -19,12 +19,12 @@ class Context:
         with open(file, "r") as stream:
             config = yaml.safe_load(stream)
 
-        topology_path = config['topology']
-        properties_path = config['properties']
+        topology_path = config["topology"]
+        properties_path = config["properties"]
 
         context.segment_builders = Topology.parse(file=topology_path)
         Property.parse(file=properties_path, segments=context.segment_builders)
 
-        context.periods = config['periods']
+        context.n_periods = config["periods"]
 
         return context
