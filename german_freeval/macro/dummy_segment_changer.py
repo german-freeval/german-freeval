@@ -1,5 +1,5 @@
 from german_freeval.input.property_builder import PropertyBuilder
-from german_freeval.macro.hbs_segments import Base, Merging, Source, Drain
+from german_freeval.macro.hbs_segments import Base, Drain, Merging, Source
 from german_freeval.macro.segment_changer import SegmentChanger
 
 
@@ -14,7 +14,7 @@ class DummySegmentChanger(SegmentChanger):
 
         match segment:
             case Source() | Drain():
-                return            
+                return
             case Merging():
                 ramp_demand = []
             case _:
