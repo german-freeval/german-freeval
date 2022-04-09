@@ -14,6 +14,7 @@ class SegmentParserTest(unittest.TestCase):
     def test_parse_attributes(self):
         segments = Topology.parse("tests/resources/topology.csv")
         Properties.parse(file="tests/resources/attributes.csv", segments=segments)
+
         self.check_topology(segments=segments)
         self.check_properties(segments=segments)
 
