@@ -28,7 +28,7 @@ class PropertyBuilder:
         for p in sorted(self.values.keys()):
             values[p:] = [self.values[p]] * len(values[p:])
 
-        property = Property(name=self.name, type=self.type, values=values)
+        property = Property(self.name, self.type, values)
 
         return property
 
