@@ -22,3 +22,9 @@ class AttributeBuilder:
         attribute = Attribute(name=self.name, type=self.type, values=values)
 
         return attribute
+
+    def __repr__(self) -> str:
+        return str(self)
+
+    def __str__(self) -> str:
+        return "{}[{}]={}".format(self.name, self.type, self.values)
