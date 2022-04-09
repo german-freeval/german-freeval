@@ -1,5 +1,5 @@
 from typing import Dict, List
-from german_freeval.input.attributebuilder import AttributeBuilder
+from german_freeval.input.property_builder import PropertyBuilder
 from german_freeval.macro.hbs_segments import (
     Base,
     Diverging,
@@ -15,7 +15,7 @@ class SegmentBuilder:
         self.id = id
         self.segments_in = {}
         self.segments_out = {}
-        self.attribute_builders = []
+        self.property_builders = []
         pass
 
     link_types: list = ["ramp", "base"]
@@ -30,12 +30,12 @@ class SegmentBuilder:
     id: int
     segments_in: Dict[str, "SegmentBuilder"]
     segments_out: Dict[str, "SegmentBuilder"]
-    attribute_builders: List[AttributeBuilder]
+    property_builders: List[PropertyBuilder]
 
-    def add_attribute(self, new_attribute_builder: AttributeBuilder):
-        self.attribute_builders.append(new_attribute_builder)
+    def add_property(self, new_property_builder: PropertyBuilder):
+        self.property_builders.append(new_property_builder)
 
-    def has_attribute(self, attribute_name: AttributeBuilder):
+    def has_property(self, property_name: PropertyBuilder):
         pass
 
     def add_successor(self, successor: "SegmentBuilder", type: str):
@@ -65,8 +65,8 @@ class SegmentBuilder:
             id=self.id, name="unnamed"
         )  # TODO: name noch als Attribut des Builders?
 
-        for attribute_builder in self.attribute_builders:
-            setattr(segment, attribute_builder.name, attribute_builder.build())
+        for property_builder in self.property_builders:
+            setattr(segment, property_builder.name, property_builder.build())
 
         return segment
 
