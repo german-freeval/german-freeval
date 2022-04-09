@@ -1,3 +1,4 @@
+from typing import Dict, List
 from german_freeval.input.attributebuilder import AttributeBuilder
 from german_freeval.macro.hbs_segments import (
     Base,
@@ -27,9 +28,9 @@ class SegmentBuilder:
         (1, 0): Drain,
     }
     id: int
-    segments_in: dict
-    segments_out: dict
-    attribute_builders: list
+    segments_in: Dict[str, "SegmentBuilder"]
+    segments_out: Dict[int, "SegmentBuilder"]
+    attribute_builders: List[AttributeBuilder]
 
     def add_attribute(self, new_attribute_builder: AttributeBuilder):
         self.attribute_builders.append(new_attribute_builder)
