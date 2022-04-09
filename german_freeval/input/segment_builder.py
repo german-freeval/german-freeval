@@ -8,6 +8,7 @@ from german_freeval.macro.hbs_segments import (
     Source,
     Weaving,
 )
+from german_freeval.macro.segment import Segment
 
 
 class SegmentBuilder:
@@ -60,13 +61,13 @@ class SegmentBuilder:
         else:
             self.segments_in[type] = predecessor
 
-    def build(self):
+    def build(self, n_periods: int) -> Segment:
         segment = self.segment_types[(len(self.segments_in), len(self.segments_out))](
             id=self.id, name="unnamed"
         )  # TODO: name noch als Attribut des Builders?
 
         for property_builder in self.property_builders:
-            setattr(segment, property_builder.name, property_builder.build())
+            setattr(segment, property_builder.name, property_builder.build(n_periods))
 
         return segment
 
