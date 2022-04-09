@@ -16,12 +16,13 @@ class Base(Segment):
     heavyvehicle_share: Property
 
     # model parameters
-    capacity_factor: Property   
-      
+    capacity_factor: Property
+
     # ctm parameters
     freeflow_speed_hbs: Property
     capacity_hbs: Property
     jam_density: Property
+
 
 class Source(Base):
     pass
