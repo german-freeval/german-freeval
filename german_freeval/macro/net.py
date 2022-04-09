@@ -13,3 +13,9 @@ class Net:
 
     def add_segment(self, segment: Segment):
         self.segments.append(segment)
+
+    def __repr__(self) -> str:
+        return str(self)
+
+    def __str__(self) -> str:
+        return str(self.segments)

@@ -1,12 +1,12 @@
-from typing import List
 import yaml
+
+from german_freeval.input.segment_builder import SegmentBuilder
 from german_freeval.input.segment_parsers import CsvSegmentPropertyParser as Property
 from german_freeval.input.segment_parsers import CsvSegmentTopologyParser as Topology
-from german_freeval.input.segment_builder import SegmentBuilder
 
 
 class Context:
-    segment_builders: List[SegmentBuilder]
+    segment_builders: list[SegmentBuilder]
     n_periods: int
 
     def __init__(self) -> None:
