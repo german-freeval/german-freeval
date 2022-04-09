@@ -6,6 +6,8 @@ import pandas as pd
 class HBSHandler:
     def __init__(self) -> None:
         self.dirname = os.path.dirname(__file__)
+        self.hbs_table_A3_2 = self.import_table(table_name="TabA3-2")
+        self.hbs_table_A3_3 = self.import_table(table_name="TabA3-3")
         self.hbs_table_A3_4 = self.import_table(table_name="TabA3-4")
         self.hbs_table_A3_5 = self.import_table(table_name="TabA3-5")
         self.hbs_table_A3_6 = self.import_table(table_name="TabA3-6")
