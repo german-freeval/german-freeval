@@ -20,7 +20,7 @@ class SegmentChangerHBS(SegmentChanger):
             self.hbs_handler = HBSHandler()
 
     def apply(self, segment: Base):
-        self.check_hbs_property_builders(segment)
+        self.check_hbs_properties(segment)
         freeflow_speed_hbs = []
         capacity_hbs = []
         jam_density = []
@@ -62,7 +62,7 @@ class SegmentChangerHBS(SegmentChanger):
             name="jam_density", type="density", values=jam_density
         )
 
-    def check_hbs_property_builders(self, segment: Base):
+    def check_hbs_properties(self, segment: Base):
         necessary_hbs_properties = [
             "slope",
             "heavy_vehicle_share",
