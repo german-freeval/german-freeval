@@ -6,7 +6,7 @@ from german_freeval.macro.segment_changer import SegmentChanger
 class DummySegmentChanger(SegmentChanger):
 
     VEHICLES_PER_LANE_PER_KM = 100
-    CAPACITY_PER_LANE = 2000
+    CAPACITY_PER_LANE_PER_HOUR = 2000
 
     def __init__(self, n_periods: int) -> None:
         super().__init__(n_periods)
@@ -54,4 +54,4 @@ class DummySegmentChanger(SegmentChanger):
             name="demand_onramp",
             type="float",
             initial_values=incoming.demand.values.copy(),
-        )
+        ).build(self.n_periods)
